@@ -11,11 +11,13 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterUserComponent} from './register-user/register-user.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { HomeAdminComponent } from './home-admin/home-admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    HomeAdminComponent,
     LoginComponent,
     LoginAdminComponent,
     RegisterUserComponent

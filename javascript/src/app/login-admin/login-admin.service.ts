@@ -13,8 +13,8 @@ export class LoginAdminService {
         try{
             if(await this.userService.authenticateAdmin(token)){
                 console.log('asdasd')
-                // sessionStorage.setItem('email', emailEntered)
-                // this.router.navigate(['/home'])
+                sessionStorage.setItem('admin-session', 'bCtcHSOirb5wUdXku0ydhTVrytbrkzzR')
+                this.router.navigate(['/home-admin'])
             }
             else
                 throw new Error('Incorrect e-mail or password.')

@@ -15,8 +15,16 @@ export class VoteService {
     return await this.http.post(`${this.voteApiUrl}/register`, {vote: this.voteFactory.create(user, candidate)}).toPromise().then(this.extractData).catch(this.handleError);
   }
 
-  getCandidates = async() => {
+  getVotes = async() => {
     return await this.http.get(`${this.voteApiUrl}/find/all/`).toPromise().then(this.extractData).catch(this.handleError);
+  }
+
+  getReport = async() => {
+    return await this.http.get(`${this.voteApiUrl}/report/`).toPromise().then(this.extractReport).catch(this.handleError);
+  }
+
+  extractReport(res: any){
+    return res.report || {};
   }
 
   extractData(res: any) {
