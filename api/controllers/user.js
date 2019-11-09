@@ -12,6 +12,14 @@ module.exports.createUser = async(user) => {
     }
 }
 
+module.exports.authenticateAdministrator = async(token) => {
+    try {
+        return token === 'kvAiJ8tdTfq2JMAuO53VPoTXNqBVaTmB'
+    } catch (error) {
+        throw error
+    }
+}
+
 const getUserByEmail = async(userEmail) => {
     try {
         if (!userEmail) throw { code: 404, message: 'E-mail não informado' }

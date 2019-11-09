@@ -10,12 +10,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterUserComponent} from './register-user/register-user.component';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
+    LoginAdminComponent,
     RegisterUserComponent
   ],
   imports: [

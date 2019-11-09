@@ -24,6 +24,15 @@ export class UserService {
     return await this.getUserByEmail(sessionStorage.getItem('email'))
   }
 
+  authenticateAdmin = async(token) => {
+    return await this.http.post(`${this.usersApiUrl}/authenticate/admin`, {token: token}).toPromise().then(this.processAuthentication).catch(this.handleError);
+  }
+
+  processAuthentication(res: any){
+    if(res.authenticated != false) return true
+    return false
+  }
+
   extractData(res: any) {
     return res.user || {};
   }
