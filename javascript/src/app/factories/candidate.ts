@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
 export class CandidateFactory {
     create(candidate) {
         return {
-            created: new Date(),
             name:candidate.name,
             age: candidate.age,
             currentPosition: candidate.currentPosition,

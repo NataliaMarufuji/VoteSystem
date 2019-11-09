@@ -3,6 +3,7 @@ const candidatesRepository = require('../repositories/candidate')
 
 module.exports.registerVote = async(vote) => {
     try {
+        vote.created = new Date()
         return await voteRepository.create(vote)
     } catch (error) {
         throw error

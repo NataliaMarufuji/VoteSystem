@@ -1,11 +1,11 @@
 <div class="container">
     <div class="row">
         <div class="col s6">
-            <h5 class="title">Totais de votos: {{report.total}}</h5>
+            <h5 class="title">Totais de votos: {{report ? report.total : 0}}</h5>
         </div>
     </div>
     <div class="row">
-        <div class="col s6">
+        <div class="col s5">
             <h5 class="title">Candidatos</h5>
             <ul class="collection">
                 <li class="collection-item" *ngFor='let vote of candidatesVotes; let i = index'>
@@ -13,10 +13,10 @@
                     <span class="badge">{{vote.votes}} votos</span>
                 </li>
             </ul>
+            <register-candidate></register-candidate>
         </div>
-    </div>
-    <div class="row">
-        <div class="col s6">
+        <div class="col s1"></div>
+        <div class="col s5">
             <h5 class="title">Horários</h5>
             <ul class="collection">
                 <li class="collection-item" *ngFor='let vote of hoursVotes; let i = index'>

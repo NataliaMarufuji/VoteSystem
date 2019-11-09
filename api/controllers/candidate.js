@@ -2,8 +2,7 @@ const candidateRepository = require('../repositories/candidate');
 
 module.exports.createCandidate = async(candidate) => {
     try {
-        //isValidUser(candidate)
-        //await checkIfCandidateAlreadyExists(candidate)
+        candidate.created = new Date()
         return await candidateRepository.create(candidate)
     } catch (error) {
         throw error

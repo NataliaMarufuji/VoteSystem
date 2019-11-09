@@ -2,6 +2,7 @@ const userRepository = require('../repositories/user');
 
 module.exports.createUser = async(user) => {
     try {
+        user.created = new Date()
         user.email = formatEmail(user.email)
         isValidUser(user)
         await checkIfUserAlreadyExists(user)

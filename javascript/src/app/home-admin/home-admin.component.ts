@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CandidateService } from '../candidate/candidate.service';
 import { Router } from '@angular/router';
+import * as M from 'materialize-css/dist/js/materialize';
 import { VoteService } from '../vote/vote.service';
 
 @Component({
@@ -15,12 +16,13 @@ export class HomeAdminComponent {
     candidatesVotes = []
     hoursVotes = []
 
-	constructor(private router: Router, private candidateService: CandidateService, private voteService: VoteService,) {
+	constructor(private router: Router, private candidateService: CandidateService, private voteService: VoteService) {
 		this.promiseRequest = new Promise(resolve => {this.getCandidates(), this.getReport()});
 	}
 
 	ngOnInit() {
 		if(!sessionStorage.getItem('admin-session')) this.router.navigate(['/login'])
+		M.Modal.init(document.querySelectorAll('.modal'))
 	}
 
 	getCandidates = async() => {
@@ -39,6 +41,6 @@ export class HomeAdminComponent {
 		}catch(error){
 			console.log(error)
 		}
-    }
+	}
 	
 }

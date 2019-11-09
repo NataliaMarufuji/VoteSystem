@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterUserComponent} from './register-user/register-user.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
+import { RegisterCandidateComponent } from './register-candidate/register-candidate.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HomeAdminComponent } from './home-admin/home-admin.component';
     HomeAdminComponent,
     LoginComponent,
     LoginAdminComponent,
+    RegisterCandidateComponent,
     RegisterUserComponent
   ],
   imports: [

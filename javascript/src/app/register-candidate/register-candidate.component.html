@@ -1,0 +1,33 @@
+<a class="button btn modal-trigger" href="#modal1">Adicionar candidato</a>
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4 class="title">Register Candidate</h4>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="first_name" type="text" class="validate" [(ngModel)]="candidate.name">
+                <label for="first_name">Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="age" type="number" class="validate" [(ngModel)]="candidate.age">
+                <label for="age">Age</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="text" type="text" [(ngModel)]="candidate.currentPosition">
+                <label for="text">Current position</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="text" type="text" [(ngModel)]="technologies">
+                <label for="text">Technologies - separate them with ';'</label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close btn-flat" (click)="regiterCandidate()">Register</a>
+    </div>
+</div>

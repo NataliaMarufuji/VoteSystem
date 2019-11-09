@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
 export class VoteFactory {
     create(user, candidate) {
         return {
-            created: new Date(),
             user:user._id,
             candidate: candidate._id
         }

@@ -7,7 +7,6 @@ import { UserService } from './user/user.service';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  title = 'teste';
   hideMenu = true
 
   constructor(private userService: UserService){

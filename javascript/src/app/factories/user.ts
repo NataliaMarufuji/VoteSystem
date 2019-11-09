@@ -7,7 +7,6 @@ export class UserFactory {
 
     create(user) {
         return {
-            created: new Date(),
             name: user.name,
             email: user.email,
             password: user.password,

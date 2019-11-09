@@ -17,6 +17,7 @@ export class HomeComponent {
 
 	constructor(private router: Router, private userService: UserService, private candidateService: CandidateService, private voteService: VoteService,) {
 		this.promiseRequest = new Promise(resolve => {this.getCandidates(), this.getLoggedUser()});
+		console.log(new Date())
 	}
 
 	ngOnInit() {
