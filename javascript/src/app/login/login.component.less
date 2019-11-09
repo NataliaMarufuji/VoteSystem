@@ -1,0 +1,42 @@
+@purple: #951b81;
+@grey:#9B9B9B;
+@lighterGrey:#D8D8D8;
+@darkerGrey:#666666;
+
+.login-screen{
+    margin-top: 10em;  
+    .login-panel{
+        border: 1px solid @lighterGrey;
+        border-radius: 20px;
+        text-align: center;
+        width: 420px;
+        margin: auto;
+        padding: 40px;
+        .title{
+            margin-top: 0;
+            margin-bottom: 40px;
+            color: @grey;
+        }
+        .button{
+            width: 70%;
+            height: 40px;
+            text-transform: none;
+            border-radius: 20px;
+            background-color: @purple;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .goto-register{
+            margin-top: 10%;
+            margin-bottom: 0;
+            color: @darkerGrey;
+            .link{
+                text-decoration: none;
+                color: @darkerGrey;
+                font-weight: 700;
+                cursor: pointer;
+            }
+        }
+    }
+}

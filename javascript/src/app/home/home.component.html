@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+
+        <h3 class="title">Welcome to the voting area</h3>
+        <div class="col s12 section-friends">
+            <div class="col s3" *ngFor='let candidate of candidates; let i = index'>
+                <div class="card horizontal">
+                    <div class="card-image">
+                        <img src="https://image.flaticon.com/icons/svg/236/236832.svg">
+                    </div>
+                    <div class="card-stacked candidate-card">
+                        <div class="card-content">
+                            <p><b>Name:</b> {{candidate.name}}</p>
+                            <p><b>Age:</b> {{candidate.age}}</p>
+                            <p><b>Current position</b> {{candidate.currentPosition}}</p>
+                            <button class="button" (click)="vote(i)">Vote</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

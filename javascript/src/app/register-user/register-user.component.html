@@ -1,0 +1,44 @@
+<div class="register-screen">
+    <div class="preloader-wrapper big active loader" *ngIf="requestInProgress">
+        <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+    <div class="register-panel">
+        <h5 class="title">Create your account</h5>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="first_name" type="text" class="validate" [(ngModel)]="user.name">
+                <label for="first_name">First Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="email" type="email" class="validate" [(ngModel)]="user.email">
+                <label for="email">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password" type="password" class="validate" [(ngModel)]="user.password">
+                <label for="password">Password</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password" type="password" class="validate" [(ngModel)]="user.passwordConfirm">
+                <label for="password">Confirm password</label>
+            </div>
+        </div>
+        <button class="button" (click)="register()">Register</button>
+        <p class="goto-register">By registering, you acknowledge and agree to our Terms of Use and Privacy Statement.</p>
+    </div>
+</div>
