@@ -2,8 +2,8 @@
     <ul class="collection" *ngIf="partialResults && partialResults.length > 0">
         <li class="collection-item" *ngFor='let vote of partialResults; let i = index'>
             <span>{{vote.name}}</span>
-            <span class="badge" *ngIf="vote.votes > 1">{{vote.votes}} votes - {{vote.votesPercent}}%</span>
-            <span class="badge" *ngIf="vote.votes <= 1">{{vote.votes}} vote - {{vote.votesPercent}}%</span>
+            <span class="badge" *ngIf="vote.votes > 1">{{vote.votes}} votes - {{ vote.votesPercent | number:'1.2-2' }}%</span>
+            <span class="badge" *ngIf="vote.votes <= 1">{{vote.votes}} vote - {{ vote.votesPercent | number:'1.2-2' }}%</span>
         </li>
     </ul>
 </div>

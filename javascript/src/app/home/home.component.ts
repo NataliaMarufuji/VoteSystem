@@ -43,6 +43,7 @@ export class HomeComponent {
 		let candidate = this.candidates[index]
 		try{
 			await this.voteService.register(this.user, candidate)
+			this.router.navigate(['/vote-success'])
 			M.toast({html: 'Vote successfully'})
 		  }catch(error){
 			M.toast({html: 'Internal server error'})
