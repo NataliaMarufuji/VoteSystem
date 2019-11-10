@@ -20,6 +20,16 @@ module.exports.authenticateAdministrator = async(token) => {
     }
 }
 
+module.exports.authenticateUser = async(email, password) => {
+    try {
+        const user = await userRepository.getByEmail(email)
+        if (!user) return false
+        return user.password === password
+    } catch (error) {
+        throw error
+    }
+}
+
 const getUserByEmail = async(userEmail) => {
     try {
         if (!userEmail) throw { code: 404, message: 'E-mail não informado' }

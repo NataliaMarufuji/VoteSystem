@@ -28,6 +28,10 @@ export class UserService {
     return await this.http.post(`${this.usersApiUrl}/authenticate/admin`, {token: token}).toPromise().then(this.processAuthentication).catch(this.handleError);
   }
 
+  authenticateUser = async(emailEntered, passwordEntered) => {
+    return await this.http.post(`${this.usersApiUrl}/authenticate/user`, {emailEntered, passwordEntered}).toPromise().then(this.processAuthentication).catch(this.handleError);
+  }
+
   processAuthentication(res: any){
     if(res.authenticated != false) return true
     return false

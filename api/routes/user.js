@@ -11,6 +11,9 @@ router.route('/users/find/email/:email/')
 router.route('/users/authenticate/admin')
     .post(authenticateAdministrator)
 
+router.route('/users/authenticate/user')
+    .post(authenticateUser)
+
 module.exports = router
 
 async function createUser(req, res) {
@@ -35,6 +38,15 @@ async function getUserByEmail(req, res) {
 async function authenticateAdministrator(req, res) {
     try {
         const authenticated = await userController.authenticateAdministrator(req.body.token)
+        res.status(201).send({ sucess: true, authenticated: authenticated })
+    } catch (e) {
+        res.status(e.code || 500).send({ success: false, message: `Usuário não encontrado` || `Internal Server Error` })
+    }
+}
+
+async function authenticateUser(req, res) {
+    try {
+        const authenticated = await userController.authenticateUser(req.body.emailEntered, req.body.passwordEntered)
         res.status(201).send({ sucess: true, authenticated: authenticated })
     } catch (e) {
         res.status(e.code || 500).send({ success: false, message: `Usuário não encontrado` || `Internal Server Error` })

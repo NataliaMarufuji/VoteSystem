@@ -12,7 +12,6 @@ export class LoginAdminService {
     authenticate = async(token) => {
         try{
             if(await this.userService.authenticateAdmin(token)){
-                console.log('asdasd')
                 sessionStorage.setItem('admin-session', 'bCtcHSOirb5wUdXku0ydhTVrytbrkzzR')
                 this.router.navigate(['/home-admin'])
             }

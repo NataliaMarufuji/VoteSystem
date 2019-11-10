@@ -11,7 +11,7 @@ export class LoginService {
 
     authenticate = async(emailEntered, passwordEntered) => {
         try{
-            if(await this.passwordsMatch(emailEntered, passwordEntered)){
+            if(await this.userService.authenticateUser(emailEntered, passwordEntered)){
                 sessionStorage.setItem('email', emailEntered)
                 this.router.navigate(['/home'])
             }
@@ -20,17 +20,5 @@ export class LoginService {
         }catch(error){
             throw error
         }
-    }
-
-    getUser = async(email) => {
-        return await this.userService.getUserByEmail(email)
-    }
-
-    getUserPassword(user){
-        return user.password
-    }
-
-    passwordsMatch = async(emailEntered, passwordEntered) => {
-        return this.getUserPassword(await this.getUser(emailEntered)) === passwordEntered
     }
 }
