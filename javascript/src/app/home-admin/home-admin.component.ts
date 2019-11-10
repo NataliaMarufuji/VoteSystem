@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CandidateService } from '../candidate/candidate.service';
 import { Router } from '@angular/router';
 import * as M from 'materialize-css/dist/js/materialize';
 import { VoteService } from '../vote/vote.service';
