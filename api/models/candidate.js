@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const candidateSchema = mongoose.Schema({
-    created: { type: Date, default: Date.now() },
+    created: { type: Date, default: new Date() },
     name: { type: String, required: true },
     age: Number,
     currentPosition: { type: String, required: true },

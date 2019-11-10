@@ -21,7 +21,7 @@ export class HomeAdminComponent {
 	}
 
 	ngOnInit() {
-		if(!sessionStorage.getItem('admin-session')) this.router.navigate(['/login'])
+		if(!sessionStorage.getItem('admin-session')) this.router.navigate(['/login-admin'])
 		M.Modal.init(document.querySelectorAll('.modal'))
 	}
 

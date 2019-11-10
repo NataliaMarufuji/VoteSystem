@@ -3,7 +3,6 @@ const candidatesRepository = require('../repositories/candidate')
 
 module.exports.registerVote = async(vote) => {
     try {
-        vote.created = new Date()
         return await voteRepository.create(vote)
     } catch (error) {
         throw error
@@ -44,7 +43,7 @@ const getVotesGroupedByHour = async() => {
     try {
         return await voteRepository.aggregate([{
                 $project: {
-                    hour: { $hour: "$created" }
+                    hour: { $hour: { date: "$created", timezone: "America/Sao_Paulo" } }
                 }
             },
             {

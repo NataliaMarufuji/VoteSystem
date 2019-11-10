@@ -9,7 +9,7 @@ module.exports.getOne = async function(filter) {
 }
 
 module.exports.getMany = async function(filter, projection) {
-    if (filter) return await vote.find(filter, projection)
+    if (filter) return await Vote.find(filter, projection)
     else return await Vote.find()
 }
 
