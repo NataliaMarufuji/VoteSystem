@@ -8,7 +8,7 @@ router.route('/vote/register/')
 router.route('/vote/find/all')
     .get(getAllVotes)
 
-router.route('/vote/report')
+router.route('/vote/report/:day?')
     .get(getVotesReport)
 
 router.route('/vote/partial/results')
@@ -36,7 +36,7 @@ async function getAllVotes(req, res) {
 
 async function getVotesReport(req, res) {
     try {
-        const report = await voteController.getVotesReport()
+        const report = await voteController.getVotesReport(req.params.day)
         res.status(201).send({ success: true, report })
     } catch (e) {
         res.status(e.code || 500).send({ success: false, message: e.message || `Internal Server Error` })

@@ -6,20 +6,29 @@
     </div>
     <div class="row">
         <div class="col s5">
-            <h5 class="title">Candidates</h5>
+            <h5 class="title title-candidates">Candidates</h5>
             <partial-result></partial-result>
             <register-candidate></register-candidate>
         </div>
         <div class="col s1"></div>
         <div class="col s5">
-            <h5 class="title">Hours</h5>
-            <ul class="collection">
+            <div>
+                <h5 class="title col s6">Hours</h5>
+                <div class="input-field col s6">
+                    <select [(ngModel)]="dayToSearch" #day (change)="getReport(day.value)">
+                        <option *ngFor='let day of days; let i = index' [value]="i + 1">{{day}}</option>
+                    </select>
+                    <label>Day to search</label>
+                </div>
+            </div>
+            <ul class="collection" *ngIf="hoursVotes && hoursVotes.length > 0">
                 <li class="collection-item" *ngFor='let vote of hoursVotes; let i = index'>
                     <span>{{vote._id}}:00</span>
                     <span class="badge" *ngIf="vote.votes > 1">{{vote.votes}} votes</span>
                     <span class="badge" *ngIf="vote.votes <= 1">{{vote.votes}} vote</span>
                 </li>
             </ul>
+            <span class="no-result" *ngIf="!hoursVotes || hoursVotes.length == 0">No results :(</span>
         </div>
     </div>
 </div>

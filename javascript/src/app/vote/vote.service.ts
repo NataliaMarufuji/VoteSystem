@@ -19,8 +19,8 @@ export class VoteService {
     return await this.http.get(`${this.voteApiUrl}/find/all/`).toPromise().then(this.extractData).catch(this.handleError);
   }
 
-  getReport = async() => {
-    return await this.http.get(`${this.voteApiUrl}/report/`).toPromise().then(this.extractReport).catch(this.handleError);
+  getReport = async(date) => {
+    return await this.http.get(`${this.voteApiUrl}/report/${date ? date : ''}`).toPromise().then(this.extractReport).catch(this.handleError);
   }
 
   getPartialResults = async() => {
