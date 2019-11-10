@@ -8,17 +8,6 @@ module.exports.createCandidate = async(candidate) => {
     }
 }
 
-const checkIfCandidateAlreadyExists = async(candidate) => {
-    try {
-        const existentCandidate = await candidateRepository.getOne(candidate)
-        if (existentCandidate) throw { code: 303, message: `Usuário já registrado com este e-mail` }
-        return true
-    } catch (error) {
-        throw error
-    }
-}
-module.exports.checkIfCandidateAlreadyExists = checkIfCandidateAlreadyExists
-
 module.exports.getAllCandidates = async() => {
     try {
         return await candidateRepository.getMany()

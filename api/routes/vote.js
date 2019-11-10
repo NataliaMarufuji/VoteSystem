@@ -11,6 +11,9 @@ router.route('/vote/find/all')
 router.route('/vote/report')
     .get(getVotesReport)
 
+router.route('/vote/partial/results')
+    .get(getPartialResults)
+
 module.exports = router
 
 async function registerVote(req, res) {
@@ -35,6 +38,15 @@ async function getVotesReport(req, res) {
     try {
         const report = await voteController.getVotesReport()
         res.status(201).send({ success: true, report })
+    } catch (e) {
+        res.status(e.code || 500).send({ success: false, message: e.message || `Internal Server Error` })
+    }
+}
+
+async function getPartialResults(req, res) {
+    try {
+        const results = await voteController.getPartialResults()
+        res.status(201).send({ success: true, results })
     } catch (e) {
         res.status(e.code || 500).send({ success: false, message: e.message || `Internal Server Error` })
     }

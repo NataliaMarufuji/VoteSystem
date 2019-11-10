@@ -13,6 +13,8 @@ import { RegisterUserComponent} from './register-user/register-user.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { RegisterCandidateComponent } from './register-candidate/register-candidate.component';
+import { PartialResultComponent } from './partial-result/partial-result.component';
+import { SuccessVoteComponent } from './success-vote/success-vote.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +23,10 @@ import { RegisterCandidateComponent } from './register-candidate/register-candid
     HomeAdminComponent,
     LoginComponent,
     LoginAdminComponent,
+    PartialResultComponent,
     RegisterCandidateComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    SuccessVoteComponent
   ],
   imports: [
     BrowserModule,

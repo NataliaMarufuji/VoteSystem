@@ -17,17 +17,21 @@ module.exports.getAllVotes = async() => {
     }
 }
 
+module.exports.getPartialResults = async() => {
+    try {
+        const partials = await getVotesByCandidates()
+        partials.sort((a, b) => a.votes < b.votes)
+        return partials
+    } catch (error) {
+        throw error
+    }
+}
+
 module.exports.getVotesReport = async() => {
     try {
-        let votesByCandidates = []
         let totalVotes = await voteRepository.count({})
-        let candidates = await candidatesRepository.getMany()
         let votesByHour = await getVotesGroupedByHour()
-
-        for (const candidate of candidates) {
-            let candidateVotes = await voteRepository.count({ candidate: candidate._id })
-            votesByCandidates.push({ name: candidate.name, votes: candidateVotes })
-        }
+        let votesByCandidates = getVotesByCandidates()
 
         return {
             total: totalVotes,
@@ -37,6 +41,16 @@ module.exports.getVotesReport = async() => {
     } catch (error) {
         throw error
     }
+}
+
+const getVotesByCandidates = async() => {
+    let votesByCandidates = []
+    let candidates = await candidatesRepository.getMany()
+    for (const candidate of candidates) {
+        let candidateVotes = await voteRepository.count({ candidate: candidate._id })
+        votesByCandidates.push({ name: candidate.name, votes: candidateVotes })
+    }
+    return votesByCandidates
 }
 
 const getVotesGroupedByHour = async() => {

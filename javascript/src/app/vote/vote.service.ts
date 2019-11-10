@@ -23,6 +23,14 @@ export class VoteService {
     return await this.http.get(`${this.voteApiUrl}/report/`).toPromise().then(this.extractReport).catch(this.handleError);
   }
 
+  getPartialResults = async() => {
+    return await this.http.get(`${this.voteApiUrl}/partial/results`).toPromise().then(this.extractResults).catch(this.handleError);
+  }
+
+  extractResults(res: any){
+    return res.results || {};
+  }
+
   extractReport(res: any){
     return res.report || {};
   }
