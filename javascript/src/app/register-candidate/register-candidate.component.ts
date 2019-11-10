@@ -9,16 +9,18 @@ import { CandidateService } from '../candidate/candidate.service';
 })
 export class RegisterCandidateComponent {
     
-	candidate = {technologies:[]}
+	candidate = {name: '', technologies:[]}
 	technologies = ''
     
     constructor(private candidateService: CandidateService){}
 
 	regiterCandidate = async() => {
 		try{
+			if(!this.candidate.name || this.candidate.name.length < 3)
+				return M.toast({html: 'Enter the candidates´s name'})
 			this.getCandidateTechnologies()
 			await this.candidateService.create(this.candidate)
-			this.candidate = {technologies:[]}
+			this.candidate = {name: '', technologies:[]}
 			this.technologies = ''
             M.toast({html: 'Candidate registered'})
         }catch(error){

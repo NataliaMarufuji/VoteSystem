@@ -42,7 +42,6 @@ export class HomeAdminComponent {
 		this.dayToSearch = today.getDate()
 		let daysInMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate()
 		for(let i = 0; i < daysInMonth; i++) this.days.push(i + 1)
-		console.log(this.days)
 	}
 
 }
