@@ -10,8 +10,8 @@ mongoose.set('useCreateIndex', true);
 
 const assert = require('assert');
 const sinon = require('sinon');
-const userFactory = require('../factories/users.spec')
-const userService = require('../services/users.spec')
+const userFactory = require('../factories/user.spec')
+const userService = require('../services/user.spec')
 const userController = require('../../controllers/user')
 
 const name = 'Nathan Philip'
@@ -95,7 +95,7 @@ describe('userController', () => {
         });
     });
     describe('createUser()', () => {
-        it('CT017 - createUser(): ok', async() => {
+        it('CT009 - createUser(): ok', async() => {
             try {
                 const user = userFactory.createUser()
                 userService.getByEmailUserDoesntExists()
@@ -106,7 +106,7 @@ describe('userController', () => {
                 assert.strictEqual(error.message, 'shouldn´t generate error')
             }
         });
-        it('CT018 - createUser(): user already register', async() => {
+        it('CT010 - createUser(): user already register', async() => {
             try {
                 const user = userFactory.createUser()
                 userService.getByEmail()
@@ -117,7 +117,7 @@ describe('userController', () => {
                 assert.strictEqual(error.message, 'User already registered with informed e-mail')
             }
         });
-        it('CT019 - createUser(): user with no email', async() => {
+        it('CT011 - createUser(): user with no email', async() => {
             try {
                 const user = userFactory.createUserWithNoEmail()
                 userService.getByEmailUserDoesntExists()
@@ -128,7 +128,7 @@ describe('userController', () => {
                 assert.strictEqual(error.message, 'Name, e-mail, password or password confirm not informed')
             }
         });
-        it('CT020 - createUser(): user with no password', async() => {
+        it('CT012 - createUser(): user with no password', async() => {
             try {
                 const user = userFactory.createUserWithNoPassword()
                 userService.getByEmailUserDoesntExists()
@@ -139,7 +139,7 @@ describe('userController', () => {
                 assert.strictEqual(error.message, 'Name, e-mail, password or password confirm not informed')
             }
         });
-        it('CT021 - createUser(): user with no passwordConfirm', async() => {
+        it('CT013 - createUser(): user with no passwordConfirm', async() => {
             try {
                 const user = userFactory.createUserWithNoPasswordConfirm()
                 userService.getByEmailUserDoesntExists()
@@ -150,7 +150,7 @@ describe('userController', () => {
                 assert.strictEqual(error.message, 'Name, e-mail, password or password confirm not informed')
             }
         });
-        it('CT022 - createUser(): user with no passwords', async() => {
+        it('CT014 - createUser(): user with no passwords', async() => {
             try {
                 const user = userFactory.createUserWithNoPasswords()
                 userService.getByEmailUserDoesntExists()
@@ -161,7 +161,7 @@ describe('userController', () => {
                 assert.strictEqual(error.message, 'Name, e-mail, password or password confirm not informed')
             }
         });
-        it('CT023 - createUser(): passwords doesnt match', async() => {
+        it('CT015 - createUser(): passwords doesnt match', async() => {
             try {
                 const user = userFactory.createUserWithPasswordsNotMatching()
                 userService.getByEmailUserDoesntExists()
@@ -174,7 +174,7 @@ describe('userController', () => {
         });
     });
     describe('getUserByEmail()', () => {
-        it('CT024 - getUserByEmail(): email = null', async() => {
+        it('CT016 - getUserByEmail(): email = null', async() => {
             try {
                 userService.getByEmail()
                 const response = await userController.getUserByEmail('')
@@ -183,7 +183,7 @@ describe('userController', () => {
                 assert.strictEqual(error.message, 'E-mail not informed')
             }
         });
-        it('CT025 - getUserByEmail(): user not found', async() => {
+        it('CT017 - getUserByEmail(): user not found', async() => {
             try {
                 userService.getByEmailUserDoesntExists()
                 const response = await userController.getUserByEmail(email)
@@ -192,7 +192,7 @@ describe('userController', () => {
                 assert.strictEqual(error.message, `User ${email} not found`)
             }
         });
-        it('CT026 - getUserByEmail(): user found', async() => {
+        it('CT018 - getUserByEmail(): user found', async() => {
             try {
                 const user = userFactory.createUserReturnedFromGetByEmail()
                 userService.getByEmail()
@@ -204,7 +204,7 @@ describe('userController', () => {
         });
     })
     describe('stringToLowerCase()', () => {
-        it('CT127 - stringToLowerCase(): string = null', async() => {
+        it('CT019 - stringToLowerCase(): string = null', async() => {
             try {
                 const response = await userController.stringToLowerCase('')
                 assert.strictEqual(response, '')
@@ -212,7 +212,7 @@ describe('userController', () => {
                 assert.strictEqual(error.message, 'shouldn´t go wrong')
             }
         });
-        it('CT128 - stringToLowerCase(): ok', async() => {
+        it('CT020 - stringToLowerCase(): ok', async() => {
             try {
                 const response = await userController.stringToLowerCase('TESTE')
                 assert.strictEqual(response, 'teste')
@@ -222,7 +222,7 @@ describe('userController', () => {
         });
     });
     describe('trimString()', () => {
-        it('CT129 - trimString(): string = null', async() => {
+        it('CT021 - trimString(): string = null', async() => {
             try {
                 const response = await userController.trimString('')
                 assert.strictEqual(response, '')
@@ -230,7 +230,7 @@ describe('userController', () => {
                 assert.strictEqual(error.message, 'shouldn´t go wrong')
             }
         });
-        it('CT130 - trimString(): ok', async() => {
+        it('CT022 - trimString(): ok', async() => {
             try {
                 const response = await userController.trimString('TE STE')
                 assert.strictEqual(response, 'TESTE')
@@ -240,7 +240,7 @@ describe('userController', () => {
         });
     });
     describe('formatEmail()', () => {
-        it('CT131 - formatEmail(): string = null', async() => {
+        it('CT023 - formatEmail(): string = null', async() => {
             try {
                 const response = await userController.formatEmail('')
                 assert.strictEqual(response, '')
@@ -248,7 +248,7 @@ describe('userController', () => {
                 assert.strictEqual(error.message, 'shouldn´t go wrong')
             }
         });
-        it('CT132 - formatEmail(): ok', async() => {
+        it('CT024 - formatEmail(): ok', async() => {
             try {
                 const response = await userController.formatEmail('TE STE@FAKE.com')
                 assert.strictEqual(response, 'teste@fake.com')
@@ -258,7 +258,7 @@ describe('userController', () => {
         });
     });
     describe('isEmailValid()', () => {
-        it('CT133 - isEmailValid(): email = null', async() => {
+        it('CT025 - isEmailValid(): email = null', async() => {
             try {
                 const response = await userController.isEmailValid('')
                 assert.equal(response, false)
@@ -266,7 +266,7 @@ describe('userController', () => {
                 assert.strictEqual(error.message, 'shouldn´t go wrong')
             }
         });
-        it('CT134 - isEmailValid(): email not valid', async() => {
+        it('CT026 - isEmailValid(): email not valid', async() => {
             try {
                 const response = await userController.isEmailValid('teste.com')
                 assert.strictEqual(response, false)
@@ -274,7 +274,7 @@ describe('userController', () => {
                 assert.strictEqual(error.message, 'shouldn´t go wrong')
             }
         });
-        it('CT135 - isEmailValid(): email valid', async() => {
+        it('CT027 - isEmailValid(): email valid', async() => {
             try {
                 const response = await userController.isEmailValid('teste@fake.com')
                 assert.strictEqual(response, true)

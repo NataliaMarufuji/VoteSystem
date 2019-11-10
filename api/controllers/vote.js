@@ -3,6 +3,7 @@ const candidatesRepository = require('../repositories/candidate')
 
 module.exports.registerVote = async(vote) => {
     try {
+        validateVote(vote)
         return await voteRepository.create(vote)
     } catch (error) {
         throw error
@@ -47,13 +48,14 @@ const getVotesByCandidates = async(total) => {
     let votesByCandidates = []
     let totalVotes = total ? total : await voteRepository.count({})
     let candidates = await candidatesRepository.getMany()
-    for (const candidate of candidates) {
+    for (let candidate of candidates) {
         let candidateVotes = await voteRepository.count({ candidate: candidate._id })
         let votesPercent = totalVotes > 0 ? ((candidateVotes / totalVotes) * 100) : 0
         votesByCandidates.push({ name: candidate.name, votes: candidateVotes, votesPercent: votesPercent })
     }
     return votesByCandidates
 }
+module.exports.getVotesByCandidates = getVotesByCandidates
 
 const getVotesGroupedByHour = async(day) => {
     try {
@@ -85,3 +87,15 @@ const getVotesGroupedByHour = async(day) => {
         throw error
     }
 }
+module.exports.getVotesGroupedByHour = getVotesGroupedByHour
+
+const validateVote = (vote) => {
+    try {
+        if (!vote.candidate) throw new Error('Is not possible to reigster vote without a candidate')
+        if (!vote.user) throw new Error('Is not possible to reigster vote without a user')
+        return true
+    } catch (error) {
+        throw error
+    }
+}
+module.exports.validateVote = validateVote
